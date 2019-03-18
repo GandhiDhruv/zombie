@@ -1,0 +1,15 @@
+
+
+body{background-color: black;}
+#main{top: 43%;
+    left: 42%;
+    height: 150px;
+    width: 150px;
+    position: absolute;}
+#finish{top: 95%;left: 45%;position: absolute;}
+#score{font-size: 45px;color: red;top: 15%;left: 37%;position: absolute;}
+#bonus1{top: 80%;
+    left: 80%;
+    height: 150px;
+    width: 150px;
+    position: absolute;}

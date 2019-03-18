@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!-- saved from url=(0081)https://s0.2mdn.net/3797665/1547135593461/AdvancedAnalytics1_300x250.5/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="ad.size" content="width=300,height=250">
+	<link rel="StyleSheet" href="./styles.css" type="text/css">
+	<script src="./tweenmax_2.0.1_min.js.download"></script>
+	<script src="./jquery.min.js.download"></script>
+	<script src="./animation.js.download"></script>
+	<script type="text/javascript">
+		var clickTag = "http://www.google.com"; 
+	</script>
+<script type="text/javascript">
+    
+      (function() {
+        var relegateNavigation = '';
+        var handleClickTagMessage = function(e) {
+          try {
+            var eventData = JSON.parse(e.data);
+          } catch (err) {
+            return;
+          }
+          if (eventData.isInitClickTag) {
+            if (eventData.clickTags) {
+              for (var i = 0; i < eventData.clickTags.length; i++) {
+                var clkTag = eventData.clickTags[i];
+                window[clkTag.name] = clkTag.url;
+              }
+            } else if (eventData.clickTag) {
+              window.clickTag = eventData.clickTag;
+            }
+            relegateNavigation = eventData.relegateNavigation;
+          }
+        };
+
+        if (open.call) {
+          window.open = function(open) {
+            return function(url, name, features) {
+              if (relegateNavigation === 'parent') {
+                var message = {'clickTag': url, 'isPostClickTag': true};
+                parent.postMessage(JSON.stringify(message), '*');
+              } else {
+                var args = [url, name];
+                if (features) {
+                  args.push(features);
+                }
+                open.apply(window, args);
+              }
+            };
+          }(window.open);
+        }
+
+        if (window.addEventListener) {
+          window.addEventListener(
+              'message', handleClickTagMessage, false);
+        } else {
+          window.attachEvent('onmessage', handleClickTagMessage);
+        }
+      })();
+    
+  </script></head>
+
+<body onload="init()">
+	<div id="container_dc" style="display: block;">
+		<div id="content_dc">
+				<div id="bg" class="full_div">
+
+				</div>			
+				<div id="logo" class="full_div"><img src="./logo.png" width="300" height="250"></div>
+				<div id="cta" class="full_div"><img src="./cta.png" width="300" height="250"></div>
+				<div id="cta_copy" class="full_div"><img src="./cta_copy.png" width="300" height="250"></div>
+				
+				<div id="copy1" class="full_div" style="visibility: hidden; opacity: 0;">
+					<div id="copy1a" class="text1 full_div" style="visibility: inherit; opacity: 1;"><img src="./copy1a.png" width="300" height="250"></div>		
+					<div id="copy1b" class="text1 full_div" style="visibility: inherit; opacity: 1;"><img src="./copy1b.png" width="300" height="250"></div>			
+				</div>
+				<div id="copy2" class="full_div" style="visibility: hidden; opacity: 0;">
+					<div id="copy2a" class="text1 full_div" style="visibility: inherit; opacity: 1;"><img src="./copy2a.png" width="300" height="250"></div>			
+					<div id="copy2b" class="text1 full_div" style="visibility: inherit; opacity: 1;"><img src="./copy2b.png" width="300" height="250"></div>			
+				</div>
+				<div id="copy3" class="full_div">
+					<div id="copy3a" class="text1 full_div" style="visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"><img src="./copy3a.png" width="300" height="250"></div>			
+					<div id="copy3b" class="text1 full_div" style="visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"><img src="./copy3b.png" width="300" height="250"></div>			
+					<div id="copy3c" class="text2 full_div" style="visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"><img src="./copy3c.png" width="300" height="250"></div>	
+				</div>
+				<div id="anim_container" class="full_div" style="visibility: hidden; opacity: 0;">
+					<div id="anim_bg" class="full_div"></div>			
+					<div id="main_img" class="full_div">
+						<div id="img_bg" class="full_div"><img src="./img_bg.jpg" width="300" height="250"></div>								
+						
+						<div id="img_closed_container" class="full_div" style="visibility: hidden; opacity: 0;">
+							<div id="img_box_closed" class="full_div"><img src="./img_box_closed.png" width="300" height="250"></div>								
+						</div>	
+						
+						<div id="img_half_container" class="full_div" style="visibility: inherit; opacity: 1;">
+							<div id="img_box_halfclosed" class="full_div" style="visibility: hidden; opacity: 0;"><img src="./img_box_halfclosed.png" width="300" height="250"></div>								
+							<div id="img_half_flap" class="full_div" style="transform: matrix(1, 0, 0, 1.3, 0, 1); transform-origin: 64px 112px 0px; visibility: hidden; opacity: 0;"><img src="./img_half_flap.png" width="300" height="250"></div>								
+						</div>	
+						
+						<div id="img_open_container" class="full_div" style="visibility: inherit; opacity: 1;">
+							<div id="img_back_flap" class="full_div" style="transform: matrix(1, 0, 0, 1, 0, 0); visibility: inherit; opacity: 1;"><img src="./img_back_flap.png" width="300" height="250"></div>								
+							<div id="img_arm_open" class="full_div" style="transform: matrix(1, 0, 0, 1, 0, 0); visibility: inherit; opacity: 1;"><img src="./img_arm_open.png" width="300" height="250"></div>								
+							<div id="img_head_mask" class="full_div">
+								<div id="img_head" class="full_div" style="transform: matrix(1, 0, 0, 1, 0, 0);"><img src="./img_head.png" width="300" height="250"></div>								
+								<div id="img_eyes" class="full_div" style="transform: matrix(1, 0, 0, 1, 2, 0);"><img src="./img_eyes.png" width="300" height="250"></div>		
+							</div>							
+						</div>	
+						
+						<div id="img_half_arm" class="full_div" style="visibility: hidden; opacity: 0; transform: matrix(1, 0, 0, 1, 0, -10);"><img src="./img_half_arm.png" width="300" height="250"></div>								
+						<div id="img_box_front" class="full_div"><img src="./img_box_front.png" width="300" height="250"></div>								
+						<div id="img_hand" class="full_div" style="visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"><img src="./img_hand.png" width="300" height="250"></div>
+						<div id="img_front_flap" class="full_div" style="visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"><img src="./img_front_flap.png" width="300" height="250"></div>								
+														
+						
+					</div>	
+					<div id="scrub_base" class="full_div"><img src="./scrub_base.png" width="300" height="250"></div>								
+					<div id="scrub_bar" class="full_div" style="transform: matrix(0.6, 0, 0, 1, 0, 0); transform-origin: 28px 100% 0px;"><img src="./scrub_bar.png" width="300" height="250"></div>
+							
+				</div>			
+			
+	
+				
+			
+		</div>   
+		<div id="border_div" class="full_div"></div>
+		<div id="bgFade" class="full_div" style="visibility: hidden; opacity: 0; display: none;"></div>
+		<a id="background_exit_dc" onclick="javascript:window.open(window.clickTag)" target="_blank"></a>
+	</div>
+
+
+</body></html>

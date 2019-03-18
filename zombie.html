@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Zombie Hunter</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body id="bodyID">
+    <img src="image/zombie.jpg" id="main" onclick="this.src='image/explosion1.gif'; audio(); playerScore();">
+    <p id='score'> </p>
+    <audio id="sound">
+        <source src="src/Dying Sound1.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        let count = 0;
+        function playerScore(){
+            count++;
+            console.log(count)
+        }
+        function positionModifier(){
+            var width = window.innerWidth;
+            var height = window.innerHeight;
+            x = Math.random()*(width- 150);
+            if (x > width){
+                x -= 200
+                document.getElementById('main').style.left = x +'px';
+            }
+            else{
+                document.getElementById('main').style.left = x+'px';
+            }
+            y = Math.random()*(height-150);
+            if(y > height){
+                y -= 200
+                document.getElementById('main').style.top=y+'px';
+            }
+            else{
+                document.getElementById('main').style.top=y+'px';
+            }
+            document.getElementById('main').src='zombie.jpg';
+            }
+        let sound = document.getElementById('sound');
+        function audio(){
+            sound.play()
+        }
+        console.log(count);
+        setInterval(positionModifier, 1500)
+    </script>    
+</body>
+</html>

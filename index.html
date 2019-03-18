@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Zombie Hunter</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body id="bodyID">
+    <img src="images/zombie.jpg" id="main" onclick="this.src='images/explosion1.gif'; audio(); playerScore();">
+    <button id="finish" onclick="endGame()">End game</button>
+    <p id="score"></p>
+    <audio id="sound">
+        <source src="src/Dying Sound1.mp3" type="audio/mpeg">
+    </audio>
+    <div ><img id="bonus1" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+         onclick="bonusRound();playerScore();audio()"></div>
+    <script>
+        let count = 0;
+        function endGame(){
+            clearInterval(game);
+            document.getElementById('main').style='initial';  
+            document.getElementById('bonus1').src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+            document.getElementById('score').innerHTML="Your score is 0"; 
+        }
+        function playerScore(){
+            count++;
+        }
+        function positionModifier(){
+            let width = window.innerWidth;
+            let height = window.innerHeight;
+            x = Math.random()*(width- 150);
+            if (x >= width){
+                x -= 150
+                document.getElementById('main').style.left = x +'px';
+            }
+            else{
+                document.getElementById('main').style.left = x+'px';
+            }
+            y = Math.random()*(height-150);
+            if(y >= height){
+                y -= 150
+                document.getElementById('main').style.top=y+'px';
+            }
+            else{
+                document.getElementById('main').style.top=y+'px';
+            }
+            if(count > 3){
+                document.getElementById('bonus1').src='images/zombie.jpg'
+                document.getElementById('bonus1').style.left = y/6+'px'
+                document.getElementById('bonus1').style.top = x/4+'px'
+            }
+            document.getElementById('main').src='images/zombie.jpg';
+            document.getElementById('score').innerHTML="Your score is "+ count; 
+            }
+        let sound = document.getElementById('sound');
+        function audio(){
+            sound.play()
+        }
+        function bonusRound(){
+            document.getElementById('bonus1').src="images/explosion1.gif"
+        }
+        console.log(count);
+        let game = setInterval(positionModifier, 2000)
+    </script>    
+</body>
+</html>
